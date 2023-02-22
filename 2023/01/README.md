@@ -65,15 +65,8 @@ determining the steps to reach an all-'G' state was surprisingly fast in lengthy
 Determining the number of steps to reach an all-'G' state is only part of the problem. To find a 20-character starting 
 state that takes between 880,000 and 890,000 steps to reach an all-'G' state, I implemented a simple genetic algorithm
 that operated on randomized starting populations of strings. This was probably unnecessary, as in testing I generally 
-needed to test fewer than 100 randomized starting strings to find one that matched the requirements, but it was fun to 
+needed to generate fewer than 100 randomized starting strings to find one that matched the requirements, but it was fun to 
 do and converges on a solution well. It should be noted that the genetic algorithm is not guaranteed to yield 
 a solution, although in practice it does so reliably. The script may be re-run if a solution is not found.
 
-Thanks to the recursive solver, determining the number of steps for a 100-character all-'T' state was unexpectedly
-trivial.
-
-
-
-
-
-
+Thanks to the recursive solver, the bonus challenge was unexpectedly trivial.
