@@ -18,7 +18,7 @@ Usage:
 
 		$ python jan2023.py
 
-The script will output one possible solution for the main challenge (if successsful), plus the number of steps for the 
+The script will output one possible solution for the main challenge (if successful), plus the number of steps for the 
 bonus challenge. 
 
 ## Discussion 
@@ -52,7 +52,7 @@ to be considered  and operations can repeated for the next-rightmost character, 
 reached. This gives excellent properties for a recursive approach:
 
 * The size of the string to be considered decreases in length the further down the recursive chain we move. This remains true for any sub-transformations as well.
-* The recusion will always arrive at trivial cases, since the leftmost character in the string can always be transformed into any other character.
+* The recursion will always arrive at trivial cases, since the leftmost character in the string can always be transformed into any other character.
 
 A recursive solver seemed like an approach that was more likely to handle 20-character strings successfully.
 
@@ -60,7 +60,7 @@ The difficulty is that handling the transformation rules recursively is more con
 approach. For this reason, the BFS solver was enormously useful for debugging the recursive solver and it's been 
 retained in the python script in the BFSGeneSolver class. Once the recursive approach was working together with 
 dynamic programming to keep a record of the minimum steps for previously-determined substring transformations, 
-determining the steps to reach an all-'G' state was suprisingly fast in lengthy strings.
+determining the steps to reach an all-'G' state was surprisingly fast in lengthy strings.
 
 Determining the number of steps to reach an all-'G' state is only part of the problem. To find a 20-character starting 
 state that takes between 880,000 and 890,000 steps to reach an all-'G' state, I implemented a simple genetic algorithm
@@ -69,7 +69,7 @@ needed to test fewer than 100 randomized starting strings to find one that match
 do and converges on a solution well. It should be noted that the genetic algorithm is not guaranteed to yield 
 a solution, although in practice it does so reliably. The script may be re-run if a solution is not found.
 
-Thanks the the recursive solver, determining the number of steps for a 100-character all-'T' state was unexpectedly
+Thanks to the recursive solver, determining the number of steps for a 100-character all-'T' state was unexpectedly
 trivial.
 
 
