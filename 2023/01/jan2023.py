@@ -6,8 +6,10 @@ from copy import deepcopy
 def set_at_pos(string, position, character):
     return string[:position] + character + string[position + 1:]
 
-# A first stab at a solution and a useful debugging check on the recursive method. BFS exploration of possible moves on the input string
-# to find a minimal route to all 'G's. The search space becomes unworkably large above about 7 characters.
+# A first stab at a solution and a useful debugging check on the recursive 
+# method. BFS exploration of possible moves on the input string to find a 
+# minimal route to all 'G's. The search space becomes unworkably large above 
+# about 9 characters.
 class BFSGeneSolver:
     def __init__(self):
         self.cache = {"G": 0, "A": 1, "C": 1, "T": 1}
@@ -315,7 +317,8 @@ class RecursiveGeneSolver:
                 self.AsAndCCache[key] = 1
                 return 1
         top = len(array) - 1
-        # all characters before the top character (always the final character in the input in this case)
+        # all characters before the top character (always the final character 
+        # in the input in this case)
         topslice = array[:top]
         toplen = len(topslice)
         if hasEndingC:
@@ -396,7 +399,9 @@ class GeneticAlgorithmGeneSearch:
             else:
                 gene.append('A')
         return gene
-    # GA fitness measure
+    # GA fitness measure. Fitness is the wrong term in this case, since we're 
+    # trying to minimize deviation from a target value rather than maximize
+    # a metric.
     def fitness(self, gene):
         steps = self.recursiveSolver.solve(gene)
         if steps < self.minSteps:
@@ -475,7 +480,7 @@ class GeneticAlgorithmGeneSearch:
                 print("Satisfactory gene found at start of generation {0}".format(g))
                 return best
             avg = sum(map(self.fitness, population))/len(population)
-            print("Generation {0} population {1} best fitness {2} average {3}".format(g, len(population), self.fitness(best), avg))
+            print("Generation {0} population {1} minimum deviation {2} average {3}".format(g, len(population), self.fitness(best), avg))
             population = self.reproduceAndReplacePopulation(population)
             population = self.mutatePopulation(population)
             highest = min(population, key = lambda c: self.fitness(c))
@@ -487,7 +492,8 @@ class GeneticAlgorithmGeneSearch:
             print("No satisfactory gene found after {0} generations. Best fitness found: {1}".format(self.maxGenerations, self.fitness(best)))
         return best
 
-# use the trustworthy-but-slow BFS solver to validate the trickier-but-fast recursive solver
+# Use the trustworthy-but-slow BFS solver to validate the trickier-but-fast 
+# recursive solver
 def validation():
     print("Starting validation")
     bfsSolver = BFSGeneSolver()
