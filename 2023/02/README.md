@@ -24,7 +24,7 @@ Usage:
 
 		optional arguments:
 		  -h, --help            show this help message and exit
-		  -b, --bonus           Attempt to solve the bonus problem for 26 queens.
+		  -b, --bonus           Attempt to solve the bonus problem for 26 queens
 		  -m MAXATTEMPTS        Maximum number of solutions to attempt
 
 Example:
@@ -48,7 +48,7 @@ process is low.
 
 Briefly, the algorithm is as follows:
 
-1. Place one queen per column, in a randomly selected row
+1. Place one queen per column, in a randomly selected row.
 2. Until a solution is reached or the available moves that result in previously-unseen queen arrangements are 
 exhausted:
 	1. Count the threats against each queen. If no queens are under threat, a solution has been reached.
@@ -56,8 +56,8 @@ exhausted:
 	in the same column. If a move would reduce the number of threats to the queen add it to a list of candidate moves.
 	3. Order the list of candidate moves by *reduction in threats* (i.e. the number of threats against the current 
 	queen position minus the number of threats if the queen were to be moved)
-	4. For each move on the ordered candidate move list check if it results in board 
-	position that has been previously seen. If not, perform the move and return to the top of the loop.
+	4. For each move on the ordered candidate move list check if it results in a board position that has been 
+	previously seen. If not, perform the move and return to the top of the loop.
 	5. If no candidate moves are available that produce a previously unseen board position, this attempt at an 
 	*n*-queen solution has failed and can be restarted with a new random initial queen arrangement.
 
