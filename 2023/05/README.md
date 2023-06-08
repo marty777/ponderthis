@@ -33,7 +33,7 @@ Solve the bonus challenge:
 
 		$  may2023 --bonus
 
-Increasing the number of worker threads to a value close to the number of available cores will increase the speed of the initial indexing of *Q* vectors and the matrix multiplication step.
+Increasing the number of worker threads to a value close to the number of available cores will increase the speed of the matrix multiplication step.
 
 ## Discussion
 
