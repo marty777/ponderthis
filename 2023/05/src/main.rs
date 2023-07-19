@@ -47,7 +47,6 @@ fn thread_quadratic_form(solver:&QuadraticK5Solver, u_indexes:&Vec<usize>) -> f6
 /// * 'batch_amount' - The number of distinct Q vectors for which to apply 
 /// partial sums in each worker thread.
 /// * 'q_threads' - The number of worker threads to run.
-/// * 'n' - the n value of the provided solver.
 /// * 'distinct_q_vectors' - The number of distinct Q vectors in the entire set.
 fn quadratic_form(solver_lock:&Arc<RwLock<QuadraticK5Solver>>, batch_amount:usize, q_threads:usize, distinct_q_vectors:usize) -> f64 {
 	let mut child_results:Vec<f64> = Vec::new();
