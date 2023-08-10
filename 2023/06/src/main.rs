@@ -29,7 +29,7 @@ fn main() {
 			println!("The maximum amount of cheese obtainable is: {}", path.num_cheeses());
 			println!("One path that can collect the maximum amount of cheese is:\n{}",  path.path_string());
 		},
-		None => println!("An error occurred an the maximum amount of cheese could not be found"),
+		None => println!("An error occurred and the maximum amount of cheese could not be found"),
 	}
 	
 	let duration = start_instant.elapsed();

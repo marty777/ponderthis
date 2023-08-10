@@ -14,3 +14,5 @@ Implementations to produce solutions for the [IBM Research Ponder This](https://
 [May 2023](2023/05/) - Quadratic forms
 
 [June 2023](2023/06/) - Temporal cheese maze
+
+[July 2023](2023/07/) - Sliding pieces
