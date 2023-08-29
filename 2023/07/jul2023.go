@@ -47,13 +47,15 @@ func main() {
 			8: color.RGBA{0x80, 0x00, 0x80, 0xff},
 	}
 	var result slidingpieces.DijkstraState
+	var challengeBoard slidingpieces.Board
+	var maxCost int
 	var err error
 	var validateErr error
 	var validateCost int
 	var animationGenerator slidingpieces.AnimationGenerator
 	animationCellSize := 40
 	animationOutlineWidth := 1
-	animationFramesPerMove := 4
+	animationFramesPerMove := 3
 	animationFrameDelay := 1
 	animationMoveCompleteDelay := 10
 	animationSolutionCompleteDelay := 300
@@ -70,14 +72,8 @@ func main() {
 		1.888
 		1..55
 		17777`
-		challengeBonusBoard := slidingpieces.NewBoard(challengeBoardString, challengeBoardNumPieces, challengeBoardPieceTypes, challengeBonusGoalString)
-		result, err = challengeBonusBoard.Dijkstra(150, *verbosePtr)
-		if err == nil {
-			validateCost, validateErr = challengeBonusBoard.Validate(result.Path, *verbosePtr)
-			if validateErr == nil {
-				animationGenerator = slidingpieces.NewAnimationGenerator(challengeBonusBoard, result, challengeBoardPieceColors, animationCellSize, animationOutlineWidth)
-			}
-		}
+		challengeBoard = slidingpieces.NewBoard(challengeBoardString, challengeBoardNumPieces, challengeBoardPieceTypes, challengeBonusGoalString)
+		maxCost = 150
 	} else {
 		fmt.Println("Searching for solutions to the main challenge...")
 		challengeMainGoalString := `
@@ -86,14 +82,13 @@ func main() {
 		.3311
 		57718
 		.5888`
-		challengeMainBoard := slidingpieces.NewBoard(challengeBoardString, challengeBoardNumPieces, challengeBoardPieceTypes, challengeMainGoalString)
-		result, err = challengeMainBoard.Dijkstra(100, *verbosePtr)
-		if err == nil {
-			validateCost, validateErr = challengeMainBoard.Validate(result.Path, *verbosePtr)
-			if validateErr == nil {
-				animationGenerator = slidingpieces.NewAnimationGenerator(challengeMainBoard, result, challengeBoardPieceColors, animationCellSize, animationOutlineWidth)
-			}
-		}
+		challengeBoard = slidingpieces.NewBoard(challengeBoardString, challengeBoardNumPieces, challengeBoardPieceTypes, challengeMainGoalString)
+		maxCost = 100
+	}
+	
+	result, err = challengeBoard.Dijkstra(maxCost, *verbosePtr)
+	if err == nil {
+		validateCost, validateErr = challengeBoard.Validate(result.Path, *verbosePtr)
 	}
 	fmt.Println("Result:")
 	if err != nil {
@@ -104,14 +99,13 @@ func main() {
 		fmt.Println(fmt.Sprintf("Solution path %s was found the cost determined by the search (%d) does not match the cost found in validation (%d) which may indicate an error", result.Path, result.Cost, validateCost))
 	} else {
 		fmt.Println(fmt.Sprintf("Solution %s reaches the goal state with a cost of %d in %d move(s)", result.Path, result.Cost, len(result.Path)/2))
-		
 		if(*gifPtr != "") {
 			// export an animated gif 
+			animationGenerator = slidingpieces.NewAnimationGenerator(challengeBoard, result, challengeBoardPieceColors, animationCellSize, animationOutlineWidth)
 			animationGenerator.Generate(*gifPtr, animationFramesPerMove, animationFrameDelay, animationMoveCompleteDelay, animationSolutionCompleteDelay, animationReverse)
 			fmt.Println(fmt.Sprintf("An animation of the solution has been exported to %s", *gifPtr))
 		}
 	}
-	
 	endTime := getMillis()
 	elapsed := endTime - startTime
 	fmt.Println(fmt.Sprintf("Elapsed time : %d ms", elapsed))

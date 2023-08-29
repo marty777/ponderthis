@@ -21,21 +21,20 @@ type Bitmap struct {
 	pixels	[][]color.RGBA
 }
 
-// AnimationGenerator takes a defined board and valid solution and can output an animated gif
+// AnimationGenerator takes a defined board and valid solution to output an animated gif
 type AnimationGenerator struct {
-	board 			Board
-	solution 		DijkstraState
-	// cached bitmaps of each piece type
-	pieceTypeBitmaps	map[int]Bitmap	
-	palette			[]color.Color
-	outlineColor	color.RGBA
-	bgColor			color.RGBA
-	cellDim			int
-	outlineDim		int
+	board 				Board
+	solution 			DijkstraState
+	// cached bitmap images of each piece type
+	pieceTypeBitmaps	map[int]Bitmap
+	palette				[]color.Color
+	outlineColor		color.RGBA
+	bgColor				color.RGBA
+	cellDim				int
+	outlineDim			int
 }
 
-// Export an animated gif of the solution to the specified file path
-// Each frame includes the accumulated cost to that point displayed in 7x13 fixed width basicfont characters
+// Draw all frames of the solution animation and export as an animated gif to the specified filePath
 func (ag *AnimationGenerator) Generate(filePath string, moveFrames int, moveFrameDelay int, moveCompleteDelay int, solutionCompleteDelay int, reverse bool) {
 	positions := make([]Coord, len(ag.board.Pieces))
 	for i:= 0; i < len(ag.board.Pieces); i++ {
@@ -60,7 +59,6 @@ func (ag *AnimationGenerator) Generate(filePath string, moveFrames int, moveFram
 		pieceIndex := pieceId - 1
 		dir, _ := DirectionFromCharacter(string(ag.solution.Path[i+1]))
 		nextPos := positions[pieceId - 1].add(dir.Offset())
-		cost += ag.board.Pieces[pieceIndex].Cost
 		for j := 0; j <= moveFrames; j++ {
 			img := image.NewPaletted(image.Rect(0, 0, imgWidth, imgHeight), ag.palette)
 			// initialize the image to the bgColor 
@@ -95,7 +93,7 @@ func (ag *AnimationGenerator) Generate(filePath string, moveFrames int, moveFram
 			}
 			
 			// draw the current cost
-			costStr := fmt.Sprintf("Move %d, Cost: %d", moveNum, cost)
+			costStr := fmt.Sprintf("Move %d, Cost %d", moveNum, cost)
 			costDrawer := &font.Drawer{Dst: img, Src: image.NewUniform(textColor), Face: basicfont.Face7x13, Dot: textPoint}
 			costDrawer.DrawString(costStr)
 			
@@ -116,9 +114,8 @@ func (ag *AnimationGenerator) Generate(filePath string, moveFrames int, moveFram
 				}
 			}
 		}
-		
+		cost += ag.board.Pieces[pieceIndex].Cost
 		positions[pieceIndex] = nextPos
-		
 	}
 	
 	// draw final frame
@@ -147,14 +144,14 @@ func (ag *AnimationGenerator) Generate(filePath string, moveFrames int, moveFram
 		}
 	}
 	// draw the final cost
-	costStr := fmt.Sprintf("Move %d, cost: %d", len(ag.solution.Path)/2, cost)
+	costStr := fmt.Sprintf("Move %d, Cost %d", len(ag.solution.Path)/2, cost)
 	costDrawer := &font.Drawer{Dst: finalImg, Src: image.NewUniform(textColor), Face: basicfont.Face7x13, Dot: textPoint}
 	costDrawer.DrawString(costStr)
 	
 	// if the reverse flag is set, quickly wind back the entire animation to the start
 	if(reverse) {
 		frameCount := len(images)
-		for i:= frameCount - 1; i > 0; i-- {
+		for i:= frameCount - 1; i >= 0; i-- {
 			copyFrame := image.NewPaletted(image.Rect(0, 0, imgWidth, imgHeight), ag.palette)
 			for y:= 0; y < imgHeight; y++ {
 				for x:= 0; x < imgWidth; x++ {
@@ -162,7 +159,11 @@ func (ag *AnimationGenerator) Generate(filePath string, moveFrames int, moveFram
 				}
 			}
 			images = append(images,copyFrame)
-			delays = append(delays, 0)
+			if(i == 0) {
+				delays = append(delays, solutionCompleteDelay)
+			} else {
+				delays = append(delays, 0)
+			}
 		}
 		
 	}
@@ -179,6 +180,7 @@ func (ag *AnimationGenerator) Generate(filePath string, moveFrames int, moveFram
 	})
 }
 
+// Construct a pre-built bitmap for a piece type
 func NewPieceBitmap(piece SlidingPiece, fillColor color.RGBA, outlineColor color.RGBA, cellDim int, outlineDim int) Bitmap {
 	// outline is external to cell fill area, so width and height of the bitmap are cell width and cell height of the piece, multiplied by cellDim + 2 * outlineDim 
 	width := piece.Bound.X * cellDim + 2 * outlineDim
@@ -216,10 +218,9 @@ func NewPieceBitmap(piece SlidingPiece, fillColor color.RGBA, outlineColor color
 	}
 	// draw the cell outlines
 	for c := 0; c < len(piece.Cells.CoordList); c++ {
-		// add top outline border if no neighboring cells
+		// add top outline border if no neighboring cell
 		topCoord := piece.Cells.CoordList[c].add(Up.Offset())
 		if(!piece.Cells.contains(topCoord)) {
-			
 			startX := 0
 			endX := cellDim + outlineDim;
 			for x := startX; x < endX; x++ {
@@ -230,10 +231,9 @@ func NewPieceBitmap(piece SlidingPiece, fillColor color.RGBA, outlineColor color
 				}
 			}
 		}
-		// add bottom outline border if no neighboring cells
-		bottomCoord := piece.Cells.CoordList[c].add(Coord{0,1})
+		// add bottom outline border if no neighboring cell
+		bottomCoord := piece.Cells.CoordList[c].add(Down.Offset())
 		if(!piece.Cells.contains(bottomCoord)) {
-			
 			startX := 0
 			endX := cellDim + outlineDim;
 			for x := startX; x < endX; x++ {
@@ -245,7 +245,7 @@ func NewPieceBitmap(piece SlidingPiece, fillColor color.RGBA, outlineColor color
 			}
 			
 		}
-		// add left outline border if no neighboring cells
+		// add left outline border if no neighboring cell
 		leftCoord := piece.Cells.CoordList[c].add(Left.Offset())
 		if(!piece.Cells.contains(leftCoord)) {
 			startY := 0
@@ -259,7 +259,7 @@ func NewPieceBitmap(piece SlidingPiece, fillColor color.RGBA, outlineColor color
 			}
 			
 		}
-		// add right outline border if no neighboring cells
+		// add right outline border if no neighboring cell
 		rightCoord := piece.Cells.CoordList[c].add(Right.Offset())
 		if(!piece.Cells.contains(rightCoord)) {
 			startY := 0
@@ -273,11 +273,17 @@ func NewPieceBitmap(piece SlidingPiece, fillColor color.RGBA, outlineColor color
 			}
 		}
 	}
-	
 	return Bitmap{width, height, pixels}
 }
 
 func NewAnimationGenerator(board Board, solution DijkstraState, pieceColors map[int]color.RGBA, cellDim int, outlineDim int) AnimationGenerator {
+	// check provided arguments
+	if(cellDim < 5) {
+		panic(fmt.Sprintf("Provided cell dimension %d is too small (minimum 5)", cellDim))
+	}
+	if(outlineDim < 1) {
+		panic(fmt.Sprintf("Provided outline dimension %d is too small (minimum 1)", outlineDim))
+	}
 	_,validateErr :=  board.Validate(solution.Path, false)
 	if(validateErr != nil) {
 		panic(fmt.Sprintf("Provided solution does not pass validation %s", validateErr))
@@ -288,18 +294,16 @@ func NewAnimationGenerator(board Board, solution DijkstraState, pieceColors map[
 			panic(fmt.Sprintf("pieceColors does not include a color assignment for piece type %d", board.Pieces[p].TypeId))
 		}
 	}
-	// assuming no duplicate colors are included in the piece colors map, include each of them, plus black and white
+	// Include each piece color, plus the outline and bg colors, in the gif palette
 	var palette []color.Color
 	for _,color := range pieceColors {
 		palette = append(palette, color)
 	}
-	
 	outlineColor := color.RGBA{0x00,0x00,0x00,0xff}	// black
 	bgColor := color.RGBA{0xff,0xff,0xff,0xff}		// white
-	
 	palette = append(palette, outlineColor) 
 	palette = append(palette, bgColor) 
-	// pre-build piece bitmaps
+	// pre-build bitmaps for each piece type 
 	pieceBitmaps := make(map[int]Bitmap, len(board.Pieces))
 	for p := 0; p < len(board.Pieces); p++ {
 		_,exists := pieceBitmaps[board.Pieces[p].TypeId]
