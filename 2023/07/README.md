@@ -20,9 +20,10 @@ Usage:
 	$ ./jul2023 [OPTIONS]
 	
 	Options:
-		-b			Find a solution to the bonus challenge
-		-v			Print the status of each queue step and a trace of each move in a solution when found
-		-h			Print usage
+		-b				Find a solution to the bonus challenge
+		-v				Print the status of each queue step and a trace of each move in a solution when found
+		-g	filepath	Export an animated GIF of a solution when found
+		-h				Print usage
 
 Examples:
 
@@ -33,6 +34,10 @@ Solve the main challenge:
 Solve the bonus challenge:
 
 		$ ./jul2023 -b
+		
+Solve the main challenge and export an animated gif of the solution:
+
+		$  ./jul2023 -g solution.gif
 
 ## Discussion
 
