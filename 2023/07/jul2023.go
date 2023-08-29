@@ -18,7 +18,7 @@ func getMillis() int64 {
 func main() {
 	bonusPtr := flag.Bool("b", false, "Find a solution to the bonus challenge")
 	verbosePtr := flag.Bool("v", false, "Print the status of each queue step and a trace of each move in a solution when found")
-	gifPtr := flag.String("g", "", "Export an animated gif of the solution when found to `filepath`")
+	gifPtr := flag.String("g", "", "Export an animated gif of the solution to the specified `path` when found ")
 	
 	flag.Parse()
 	
