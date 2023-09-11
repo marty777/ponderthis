@@ -51,7 +51,7 @@ Some replacements for more concise algebraic manipulation:
 
 We want to determine the greatest *k* such that *N<sub>k</sub>* < *C*. With some substitutions to the formula:
 
-		            C > ((A ** k) - 2 + (B ** k)) / 32
+	                C > ((A ** k) - 2 + (B ** k)) / 32
 	           32 * C > (A ** k) - 2 + (B ** k)
            32 * C + 2 > (A ** k) + (B ** k)
   	log10(32 * C + 2) > log10((A ** k) + (B ** k))
@@ -65,14 +65,14 @@ As *B* is less than one (approximately 0.029) and *A* is greater (approximately 
 	log10(32 * C) + log10(1 + 0) > log10(A ** k) + log10(1 + 0)
 	    log10(32 * C) + log10(1) > log10(A ** k) + log10(1)
 	           log10(32 * C) + 0 > log10(A ** k) + 0
-                   log10(32 * C) > log10(A ** k)
+	               log10(32 * C) > log10(A ** k)
     
 And rearranging to isolate *k* using logarithmic identities for products and powers:
 
 	       log10(32 * C) > log10(A ** k)
 	log10(32) + log10(C) > k * log10(A)
-    				   k < (log10(32) + log10(C)) / log10(A)
-                       k < (log10(32) + 10 ** 100) / log10(17 + 12 * sqrt(2))
+                       k < (log10(32) + log10(C)) / log10(A)
+	                   k < (log10(32) + 10 ** 100) / log10(17 + 12 * sqrt(2))
     
 All these terms are feasible to perform calculations with and so a real value that *k* is bounded by can be computed (making sure to calculate the logarithms with sufficient precision). Taking the closest integer below that bound gives the greatest possible *k* such that *N<sub>k</sub>* < 10<sup>10<sup>100</sup></sup>, solving the bonus challenge. 
 
