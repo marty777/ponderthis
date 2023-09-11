@@ -16,3 +16,5 @@ Implementations to produce solutions for the [IBM Research Ponder This](https://
 [June 2023](2023/06/) - Temporal cheese maze
 
 [July 2023](2023/07/) - Sliding pieces
+
+[August 2023](2023/08/) - Square-triangular numbers
