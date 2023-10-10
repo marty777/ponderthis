@@ -18,3 +18,5 @@ Implementations to produce solutions for the [IBM Research Ponder This](https://
 [July 2023](2023/07/) - Sliding pieces
 
 [August 2023](2023/08/) - Square-triangular numbers
+
+[September 2023](2023/09/) - GCD recursion
