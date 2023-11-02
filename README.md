@@ -5,7 +5,7 @@ Implementations to produce solutions for the [IBM Research Ponder This](https://
 
 [January 2023](2023/01/) - Gene editing
 
-[Februrary 2023](2023/02/) - Queens & kings problem
+[February 2023](2023/02/) - Queens & kings problem
 
 [March 2023](2023/03/) - Chained primes
 
