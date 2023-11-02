@@ -20,3 +20,5 @@ Implementations to produce solutions for the [IBM Research Ponder This](https://
 [August 2023](2023/08/) - Square-triangular numbers
 
 [September 2023](2023/09/) - GCD recursion
+
+[October 2023](2023/10/) - Palindromic squares with non-palindromic roots
