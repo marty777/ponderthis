@@ -9,7 +9,7 @@ The bonus challenge asks for an integer *n* satisfying the main challenge condit
 
 ## Solution
 
-The solution, which is more of a tool for finding asymmetric roots of palindromic squares with specific modular congruences, is implemented in Go.
+The solution, which is more of a tool for finding asymmetric roots of palindromic squares with particular numbers of digits and testing them for specific modular congruences, is implemented in Go.
 
 Usage:
 
@@ -59,7 +59,7 @@ The roots of all palindromic squares in the asymmetric root family have digits o
 
 	where:
 	[x0] is a sequence of 0s of length x
-	[y0] and [y9] are sequences of 1s and 9s of length y
+	[y0] and [y9] are sequences of 0s and 9s of length y
 	[B] is a sequence of digits of some length with either one or two 1 digits and all other digits 0 
 	[B'] is the sequence [B] reversed
 	
