@@ -16,15 +16,15 @@ Usage:
 	$ python nov2023.py [-h] [-m MAXDEPTH] inputfile
 
 	positional arguments:
-		inputfile			a provided file listing all 880 distinct 4x4 magic squares
+		inputfile		a provided file listing all 880 distinct 4x4 magic squares
     
-    optional arguments:
-  		-h, --help  		show this help message and exit
-       	-m MAXDEPTH, --maxdepth MAXDEPTH
-                        	maximum move depth to explore for solutions.
+	optional arguments:
+		-h, --help		show this help message and exit
+		-m MAXDEPTH, --maxdepth MAXDEPTH
+						maximum move depth to explore for solutions.
 Example:
 	
-    $ python nov2023.py all_magic_squares_order_4.txt --maxdepth 50
+	$ python nov2023.py all_magic_squares_order_4.txt --maxdepth 50
 	
 Note that searching to a depth of 50 moves will take a relatively long time to evaluate each magic square. Passing 40 or lower is substantially faster. There are no possible solutions with fewer than 35 moves.
     
