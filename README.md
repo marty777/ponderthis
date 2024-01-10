@@ -24,3 +24,5 @@ Implementations to produce solutions for the [IBM Research Ponder This](https://
 [October 2023](2023/10/) - Palindromic squares with non-palindromic roots
 
 [November 2023](2023/11/) - Magic squares and the 15 Puzzle
+
+[December 2023](2023/12/) - Circles on a triangular grid
