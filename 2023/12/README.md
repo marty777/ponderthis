@@ -3,7 +3,7 @@ The [December challenge](https://research.ibm.com/haifa/ponderthis/challenges/De
 
 ## Challenges
 
-Given a grid of equilateral triangles with sides of length 1, the challenge defines a function *f*(*m*) for integers *m* > 0, which is the number of distinct circles centered at (0,0) with non-integer radii *r* such that *m* < *r* < *m* + 1 that pass through intersection points on the grid. The challenge asks for an *m* such that *f*(*m*) = 1,000,000.
+Given a grid of equilateral triangles with sides of length 1, the challenge defines a function *f*(*m*) for integers *m* > 0, which is the number of distinct circles centered at (0,0) with non-integer radii *r* such that *m* < *r* < *m* + 1 that intersects point on the grid. The challenge asks for an *m* such that *f*(*m*) = 1,000,000.
 
 The bonus challenge asks for all *m* such that *f*(*m*) = 1,000,000.
 
@@ -44,25 +44,31 @@ Apart from the hint given that one of the possible solution *m* values is a base
 
 At first approach, it seems like calculating *f*(*m*) for a given *m* will involve testing a very large number of grid positions as *m* increases. There are fortunately some geometric simplifications.
 
-For any given circle centered at (0,0) that intersects one or more points on the triangular grid, these intersection will be mirrored horizontally and vertically because the grid is symmetric. This means that only one quadrant of the grid needs to be examined when counting circles with intersections. For convenience, assume that we'll examine the upper-right quadrant, where *x* ≥ 0 and *y* ≥ 0. 
+For any given circle centered at (0,0) that intersects one or more points on the triangular grid, these intersection will be mirrored across the grid's three axes of symmetry. This means that only 1/6<sup>th</sup> of the grid needs to be examined when searching for intersections. The description below describes coordinates for the area immediately above the *x*-axis in the upper right-quadrant, where *x* ≥ 0, *y* ≥ 0 and *y* ≤ *x* / √(3/4). A previous version of this solution unnecessarily searched the entire *x* ≥ 0, *y* ≥ 0 quadrant for intersections.
 
 Rather than looking for distinct circles that intersect points on the grid, we're actually looking for points on the grid that are a distinct distance (i.e. a radius) from the origin. We want to examine each grid point with a distance from the origin *d* with *m* < *d* < *m* + 1, and add it to a collection of distances if *d* has not been added previously. Once all grid points have been examined, the size of the collection of distinct distances is *f*(*m*).
 
-### Traversing grid points
+### Candidate grid points
 
 The coordinate of each point in *x* is either *u* + 1/2 on an odd row or *u* on an even row for some integer *u*.
 
 The height of each triangle row is √(1<sup>2</sup> - (1/2)<sup>2</sup>) or simply √(3/4). The coordinate of each grid point in *y* is *v*√(3/4) for some integer *v*.
 
-Starting from *v* = 0, we can determine the *x* coordinates of the points on the *v*<sup>th</sup> row that intersect the circle of radius *m* and the circle of radius *m* + 1 as:
+Limiting the area examined to a 60 degree arc due to the symmetry of the grid, the intersection of the circle with radius *m* + 1 and the line *y* = *x* / √(3/4) is at coordinates *y* = (*m* + 1)√(12/21), x = (*m* + 1)√(9/21). The greatest row number to be examined is therefore:
+
+ *v*<sub>max</sub> = floor((*m* + 1)√(12/21) / √(3/4))
+
+or 
+
+*v*<sub>max</sub> = floor((*m* + 1)√(48/63)).
+
+Iterating from *v* = 1 (all grid points on the 0<sup>th</sup> row have integer radii) to *v*<sub>max</sub>, we can determine the *x* coordinates of the points on the *v*<sup>th</sup> row that intersect the circle of radius *m* and the circle of radius *m* + 1 as:
 
 *x*<sub>*v*,*m*</sub> = √(*m*<sup>2</sup> + (*v* √(3/4))<sup>2</sup>)
 
 *x*<sub>*v*,*m* + 1</sub> = √((*m* + 1)<sup>2</sup> + (*v* √(3/4))<sup>2</sup>)
 
-We can then calculate the distance to the origin for each grid point on the *v*<sup>th</sup> row with an *x* coordinate between these bounds. It's both faster and less prone to floating point errors to calculate the square of the distance from the grid point to the origin and store that in the collection of distinct distances. If a grid point has a squared distance to the origin that has been previously added to the collection, it can be discarded.
-
-Almost all relevant grid points can be examined by continuing to increment *v* until the *v*<sup>th</sup> row exceeds the height *m*. Any rows at this height have the minimum bound for points to check as *x* = 0 rather than the intersection point with the circle of radius *m*. There will be at most two rows where *m* < *y* < *m* + 1. Once all points have been examined for each row where *y* < *m* + 1, the collection of distinct distances is complete and the number of elements in it can be returned as the value of *f*(*m*).
+We can then calculate the distance to the origin for each grid point on the *v*<sup>th</sup> row with an *x* coordinate between these bounds. It's both faster and less prone to floating point errors to calculate the square of the distance from the grid point to the origin and store that in the collection of distinct distances. If a grid point has a squared distance to the origin that has been previously added to the collection, it can be discarded. Once all points have been examined below, the collection of distinct distances is complete and the number of elements in it can be returned as the value of *f*(*m*).
 
 ### Finding *f*(*m*) = 1,000,000
 

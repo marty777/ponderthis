@@ -9,33 +9,43 @@ import (
 	"sync"
 )
 
-// Determines the number of distinct circles with m < r < m+1 by searching one 
-// quadrant of the triangular grid for points that lie between the bounding 
-// circles and  storing a set of all distinct squared vector lengths found.
+// Determines the number of distinct circles with m < r < m+1 by searching a  
+// 60 degree arc of the triangular grid for points that lie between the 
+// bounding circles and storing a set of all distinct squared vector lengths 
+// found.
 func f(m int) int {
-	c := math.Sqrt(0.75) 										// constant height of a row of triangles
+	c := math.Sqrt(0.75) 										// constant height of a row of triangles, sqrt(3/4)
 	m0 := float64(m)	 										// radius of interior circle
     m1 := float64(m + 1)										// radius of exteror circle
     m0_2 := m0*m0												// radius of interior circle squared
     m1_2 := m1*m1												// radius of exterior circle squared
-	n_max := int(math.Floor(m1/c))								// greatest row number to test for circles with intersection points
+	
+	// v_max, the highest row number to examine, the floor of (the y coord of 
+	// the intersection of the line y=x/sqrt(3/4) and radius of the exterior 
+	// circle) / the height of a row
+	// m1^2 = x^2 + y^2 
+	//	-> y^2 = m1^2 - x^2 = x^2/(3/4)
+	// 	-> x^2*(4/3 + 1) = m1^2
+	//	-> x^2 = m1^2 * 3/7
+	//	-> y = sqrt(m1^2 * 3/7)/sqrt(3/4)
+	//	-> y = sqrt(m1^2 * 3/7 * 4/3 * 3/4)/sqrt(3/4)
+	//	-> y = sqrt(m1^2 * 12/21) = m1 * sqrt(12/21)
+	// 	-> v_max = y / sqrt(3/4) = m1 * sqrt(48/63)
+	v_max := int(math.Floor(m1 * math.Sqrt(48.0/63.0)))
     radii2 := make(map[float64]bool, 0)							// set of distinct circles found, given by radius squared
-	var n int = 1 												// current grid row index
-	for n <= n_max {
-		y := float64(n) * c										// cartesian y coordinate of the row
+	var v int = 1 												// current grid row index
+	for v <= v_max {
+		y := float64(v) * c										// cartesian y coordinate of the row
+		x0 := math.Sqrt((m0 * m0) - (y * y))					// cartesian x coordinate of the point on the interior circle at y
 		x1 := math.Sqrt((m1 * m1) - (y * y))					// cartesian x coordinate of the point on the exterior circle at y
-		var x0 float64 = 0										// cartesian x coordinate of the point on the interior circle at y or 0 if above it
-		if y < m0 {
-			x0 = math.Sqrt((m0 * m0) - (y * y))
-		}
 		var x float64 = 0										// storage for cartesian coord of each point on the grid at height y within the bounding circles
-		if n % 2 == 1 {
+		if v % 2 == 1 {
 			x = math.Floor(x0) + 0.5
 		} else {
 			x = math.Floor(x0)
 		}
 		for x < x1 {
-			r2 := (x * x) + (float64(n * n) * float64(0.75))	// squared length of the vector between the origin and the grid point
+			r2 := (x * x) + (float64(v * v) * float64(0.75))	// squared length of the vector between the origin and the grid point
 			if r2 > m0_2 && r2 < m1_2 {
 				_, exists := radii2[r2]
 				if !exists {
@@ -44,7 +54,7 @@ func f(m int) int {
 			}
 			x += 1.0
 		}
-		n += 1
+		v += 1
 	}
 	return len(radii2);
 }
