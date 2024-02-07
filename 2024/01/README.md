@@ -1,7 +1,7 @@
 # January 2024 Ponder This Challenge
 The [January challenge](https://research.ibm.com/haifa/ponderthis/challenges/January2024.html) asks about a elementary school student's arithmetical riddle, where the integers 1-16 are assigned without repetition to positions in a board so that 4 horizontal and 4 vertical equations are satisified.
 
-## Challengess
+## Challenges
 
 The main challenge asks for a solution that satisfies the board, along with the total number of possible solutions
 
