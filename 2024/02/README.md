@@ -47,17 +47,17 @@ To determine the probabilities of Alice or Bob winning the game, it's not necess
 
 The transition probabilities between states are more complicated, but are simple enough to calculate.
 
-| Transition    | Probability                                 |
-|---------------|---------------------------------------------|
-| $D \to D$     | $P(D_r)$                                    |
-| $D \to A$     | $P(A_r)$                                    |
-| $D \to B$     | $P(B_r)$                                    |
-| $A \to D$     | $\sum_{i= 0}^{N-2} P(A_r)^{i} \cdot P(D_r)$ |
-| $A \to B$     | $\sum_{i= 0}^{N-2} P(A_r)^{i} \cdot P(B_r)$ |
-| $A \to A_N$   | $P(A_r)^{N-1}$                              |
-| $B \to D$     | $\sum_{i= 0}^{N-2} P(B_r)^{i} \cdot P(D_r)$ |
-| $B \to A$     | $\sum_{i= 0}^{N-2} P(B_r)^{i} \cdot P(A_r)$ |
-| $B \to B_N$   | $P(B_r)^{N-1}$                              |
+| Transition    | Probability                                  |
+|---------------|----------------------------------------------|
+| $D \to D$     | $$P(D_r)$$                                   |
+| $D \to A$     | $$P(A_r)$$                                   |
+| $D \to B$     | $$P(B_r)$$                                   |
+| $A \to D$     | $$\sum_{i=0}^{N-2} P(A_r)^{i} \cdot P(D_r)$$ |
+| $A \to B$     | $$\sum_{i=0}^{N-2} P(A_r)^{i} \cdot P(B_r)$$ |
+| $A \to A_N$   | $$P(A_r)^{N-1}$$                             |
+| $B \to D$     | $$\sum_{i=0}^{N-2} P(B_r)^{i} \cdot P(D_r)$$ |
+| $B \to A$     | $$\sum_{i=0}^{N-2} P(B_r)^{i} \cdot P(A_r)$$ |
+| $B \to B_N$   | $$P(B_r)^{N-1}$$                             |
 
 Once the simplified model is constructed, it can be run forward some number of steps until the relative values in the draw and consecutive win states have stabilized. The final equilibrium of the system can then be estimated based on the values that have already accumulated in the game end states, the ratio of values in the consecutive win states, and the probabilities of transition to the game end states.
 
