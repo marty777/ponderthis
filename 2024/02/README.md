@@ -20,7 +20,7 @@ The solution will calculate and output the probabilities of Alice winning the ga
 
 I learned a lot on this one.
 
-Calculating the relative probabilities that a round ends in a win for Alice ($P(A_r)$), a win for Bob ($P(B_r)$) or a draw ($P(D_r)$) is simple enough (assuming that all dice are fair). All possible results of rolling the dice can be examined to determine the probabilities of each outcome. The approximate values are:
+Calculating the relative probabilities that a round ends in a win for Alice $P(A_r)$, a win for Bob $P(B_r)$ or a draw $P(D_r)$ is simple enough (assuming that all dice are fair). All possible results of rolling the dice can be examined to determine the probabilities of each outcome. The approximate values are:
 
 | Challenge | $P(A_r)$  | $P(B_r)$  | $P(D_r)$ |
 |-----------|-----------|-----------|----------|
