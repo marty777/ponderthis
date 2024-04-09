@@ -54,4 +54,4 @@ For each candidate $a_0$, the terms of $X_n$ can be checked for intersections wi
 
 The ranges of primes needed to reach the solution to the bonus challenge are not necessarily practical to produce directly with a Sieve of Eratosthenes. However a [segmented sieve](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes#Segmented_sieve) is able to produce the relevant primes quickly and with a small memory footprint. In a segmented sieve a starting upper bound is estimated, a set of initial primes up to the square root of that bound are produced, and those initial primes are used to mark intermediate sieves and produce lists of primes within higher integer ranges, including primes to expand the upper bound if needed.
 
-[^1]: Thanks to Serge Batalov on [mersenneforum.org](https://www.mersenneforum.org/index.php) for [pointing out](https://www.mersenneforum.org/showpost.php?p=652840&postcount=49) the congruences for  $a_0$ mod 5
+[^1]: Thanks to Serge Batalov on [mersenneforum.org](https://www.mersenneforum.org/index.php) for [pointing out](https://www.mersenneforum.org/showpost.php?p=652840&postcount=49) the congruences for  a<sub>0</sub> mod 5
