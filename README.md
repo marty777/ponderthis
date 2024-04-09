@@ -3,9 +3,11 @@ Implementations to produce solutions for the [IBM Research Ponder This](https://
 
 ## 2024 Challenges
 
-[January 2024](2024/01) - Child's arithmetical riddle (Go)
+[January 2024](2024/01/) - Child's arithmetical riddle (Go)
 
-[February 2024](2024/02) - Dice game probabilities (Python)
+[February 2024](2024/02/) - Dice game probabilities (Python)
+
+[March 2024](2024/03/) - Composite sequences (Go)
 
 ## 2023 Challenges
 
