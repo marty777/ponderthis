@@ -9,6 +9,8 @@ Implementations to produce solutions for the [IBM Research Ponder This](https://
 
 [March 2024](2024/03/) - Composite sequences (Go)
 
+[April 2024](2024/04/) - Simultaneous Towers of Hanoi (Python)
+
 ## 2023 Challenges
 
 [January 2023](2023/01/) - Gene editing (Python)
