@@ -7,3 +7,5 @@
 [March 2024](03/) - Composite sequences (Go)
 
 [April 2024](04/) - Simultaneous Towers of Hanoi (Python)
+
+[May 2024](05/) - Possible Dobble decks (Rust)
