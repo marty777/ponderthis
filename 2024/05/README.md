@@ -67,7 +67,7 @@ Consider an incidence matrix for the finite projective plane of order $N = 2$. I
     1 0 0 0 0 1 1
     0 1 0 0 1 1 0
 
-Importantly, all possible arrangements of lines and points in finite projective planes of orders $N = 2, 3, 4, 5, 7, 8$ are each known to be *isomorphic* to each other.  Thanks to this isomorphism, all possible incidence matrices that describe a finite projective plane of order 2 can be found by re-ordering the rows and columns of this incidence matrix. The same principal applies to incidence matrices for any other finite projective plane of the above orders.
+Importantly, all possible arrangements of lines and points in finite projective planes of orders $N = 2, 3, 4, 5, 7, 8$ are each known to be *isomorphic* to each other.  Thanks to this isomorphism, all possible incidence matrices that describe a finite projective plane of order 2 can be found by re-ordering the rows and columns of this incidence matrix. The same principle applies to incidence matrices for any other finite projective plane of the above orders.
 
 For a deck of cards, the same set of cards arranged in a different order is still the same deck, so row order can be ignored when determining the number of distinct decks. Symbol order is  a different matter, since rearranging which symbols are incident with cards may produce distinct decks. There are $(N^2 + N + 1)!$ ways to permute the columns of the incidence matrix, which makes directly enumerating the distinct resulting decks impractical for $N = 4$ and $N = 8$.
 
