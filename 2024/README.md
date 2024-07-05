@@ -9,3 +9,5 @@
 [April 2024](04/) - Simultaneous Towers of Hanoi (Python)
 
 [May 2024](05/) - Possible Dobble decks (Rust)
+
+[June 2024](06/) - Pythagorean triple approximations of pi (Python)
