@@ -11,3 +11,5 @@
 [May 2024](05/) - Possible Dobble decks (Rust)
 
 [June 2024](06/) - Pythagorean triple approximations of pi (Python)
+
+[July 2024](07/) - Tiling with balanced black and white tiles (Rust)
