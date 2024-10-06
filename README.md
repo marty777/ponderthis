@@ -17,6 +17,8 @@ Implementations to produce solutions for the [IBM Research Ponder This](https://
 
 [July 2024](2024/07/) - Tiling with balanced black and white tiles (Rust)
 
+[September 2024](2024/09/) - Triangle sibling pairs (Python)
+
 ## 2023 Challenges
 
 [January 2023](2023/01/) - Gene editing (Python)

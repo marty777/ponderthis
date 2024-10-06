@@ -13,3 +13,5 @@
 [June 2024](06/) - Pythagorean triple approximations of pi (Python)
 
 [July 2024](07/) - Tiling with balanced black and white tiles (Rust)
+
+[September 2024](09/) - Triangle sibling pairs (Python)
