@@ -15,3 +15,5 @@
 [July 2024](07/) - Tiling with balanced black and white tiles (Rust)
 
 [September 2024](09/) - Triangle sibling pairs (Python)
+
+[October 2024](10/) - Number splitting (Python)

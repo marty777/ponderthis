@@ -19,6 +19,8 @@ Implementations to produce solutions for the [IBM Research Ponder This](https://
 
 [September 2024](2024/09/) - Triangle sibling pairs (Python)
 
+[October 2024](2024/10/) - Number splitting (Python)
+
 ## 2023 Challenges
 
 [January 2023](2023/01/) - Gene editing (Python)
