@@ -1,6 +1,10 @@
 # ponderthis
 Implementations to produce solutions for the [IBM Research Ponder This](https://research.ibm.com/haifa/ponderthis/index.shtml) monthly challenges.
 
+## 2025 Challenges
+
+[April 2025](2025/04/) - Klumpengeist (Python)
+
 ## 2024 Challenges
 
 [January 2024](2024/01/) - Child's arithmetical riddle (Go)
