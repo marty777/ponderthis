@@ -5,6 +5,8 @@ Implementations to produce solutions for the [IBM Research Ponder This](https://
 
 [April 2025](2025/04/) - Klumpengeist (Python)
 
+[May 2025](2025/05/) - Prime Arithmetic Quiz (Python)
+
 ## 2024 Challenges
 
 [January 2024](2024/01/) - Child's arithmetical riddle (Go)
