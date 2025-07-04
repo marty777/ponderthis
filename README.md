@@ -7,6 +7,8 @@ Implementations to produce solutions for the [IBM Research Ponder This](https://
 
 [May 2025](2025/05/) - Prime Arithmetic Quiz (Python)
 
+[June 2025](2025/06/) - Jumping Frog Game (Rust)
+
 ## 2024 Challenges
 
 [January 2024](2024/01/) - Child's arithmetical riddle (Go)
