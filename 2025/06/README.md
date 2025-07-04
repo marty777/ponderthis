@@ -73,7 +73,7 @@ There are at least two approaches which are able to find move sequences which co
 
 One approach is to search for arbitrary paths that fully color a small region of the board and result in the frog positioned at the region's border. By repeatedly producing "tiles" of colored sub-regions, paths to color the full board can be reached. Limiting the tile size (e.g. to $5 \times 5$ regions) allows searches for valid sub-paths to be completed in reasonable time.
 
-Examples:
+#### Examples
 
 ![Main challenge solution completed using a tiled strategy](img/main_tiled.gif "CHCHCHBGDBEBCFCFCFEBECABABCEFEDBAFDCACDCBGHGHACDBEBEBDAFDFDGBDBECAHBHCFHBCHBAHEHEHGDGDFCHFHAHGFDFDCBHFHFGFHEGABCHGBCDBAGHFHEBHABEBEBCFEBEBDBEHFECDCACAHBCDGECECDCAHBAFAGHCACBGHBDAFHFEHAFHEDEFAFAFGBHBHCDFHFEHAHGEDEFHADFGAGABAGFEHAFEDFCFEBCFCDGDEHGDGFCFCFEBECABECE")
 
@@ -81,7 +81,7 @@ Examples:
 
 ### Repeating move patterns
 
-It's possible to find repeatable sequences of moves that can be applied to fully color sub-sections of the board. These can be chained together to color the either the entirety of the board or a large enough area that moves to color the remainder can be found with a search. Once such sequence looks like the following:
+It's possible to find repeatable sequences of moves that can be applied to fully color sub-sections of the board. These can be chained together to color the either the entirety of the board or a large enough area that moves to color the remainder can be found with a search. One such sequence looks like the following:
 
 ![Main challenge solution as a simple spiral](img/repeating_example.gif) 
 
