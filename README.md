@@ -9,6 +9,8 @@ Implementations to produce solutions for the [IBM Research Ponder This](https://
 
 [June 2025](2025/06/) - Jumping Frog Game (Rust)
 
+[October 2025](2025/10/) - Counting Mazes (Python)
+
 ## 2024 Challenges
 
 [January 2024](2024/01/) - Child's arithmetical riddle (Go)
