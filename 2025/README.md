@@ -7,3 +7,5 @@
 [June 2025](06/) - Jumping Frog Game (Rust)
 
 [October 2025](10/) - Counting Mazes (Python)
+
+[November 2025](11/) - The CAT Sequence (Python)

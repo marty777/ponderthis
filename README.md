@@ -11,6 +11,8 @@ Implementations to produce solutions for the [IBM Research Ponder This](https://
 
 [October 2025](2025/10/) - Counting Mazes (Python)
 
+[November 2025](2025/11/) - The CAT Sequence (Python)
+
 ## 2024 Challenges
 
 [January 2024](2024/01/) - Child's arithmetical riddle (Go)
