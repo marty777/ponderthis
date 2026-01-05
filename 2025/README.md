@@ -9,3 +9,5 @@
 [October 2025](10/) - Counting Mazes (Python)
 
 [November 2025](11/) - The CAT Sequence (Python)
+
+[December 2025](12/) - Sums of a prime and an even number (Go)

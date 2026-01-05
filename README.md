@@ -13,6 +13,8 @@ Implementations to produce solutions for the [IBM Research Ponder This](https://
 
 [November 2025](2025/11/) - The CAT Sequence (Python)
 
+[December 2025](2025/12/) - Sums of a prime and an even number (Go)
+
 ## 2024 Challenges
 
 [January 2024](2024/01/) - Child's arithmetical riddle (Go)
