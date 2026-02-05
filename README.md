@@ -1,6 +1,10 @@
 # ponderthis
 Implementations to produce solutions for the [IBM Research Ponder This](https://research.ibm.com/haifa/ponderthis/index.shtml) monthly challenges.
 
+## 2026 Challenges
+
+[January 2026](2026/01/) - Number Splitting (Rust)
+
 ## 2025 Challenges
 
 [April 2025](2025/04/) - Klumpengeist (Python)

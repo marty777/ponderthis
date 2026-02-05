@@ -1,0 +1,8 @@
+[package]
+name = "jan2026"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+clap = "4.5.39"
+indicatif = "0.18.0"
