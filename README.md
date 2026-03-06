@@ -5,6 +5,8 @@ Implementations to produce solutions for the [IBM Research Ponder This](https://
 
 [January 2026](2026/01/) - Number Splitting (Rust)
 
+[February 2026](2026/02/) - Blot-avoiding backgammon strategy (Python)
+
 ## 2025 Challenges
 
 [April 2025](2025/04/) - Klumpengeist (Python)
