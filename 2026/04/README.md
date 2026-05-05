@@ -53,7 +53,7 @@ $ ./target/release/apr2026 --bonus --threads 10
 
 ## Discussion
 
-For a given moment $0 \le t < 43200$ measured in seconds, the positions $h,m,s$ of the hour, minute and seconds hands, given as a proportion of a full rotation, can be expressed as fractional parts of $\frac{t}{n}$ with $n$ the number of seconds for a full rotation of the hand. Note that fractional parts of non-negative real numbers can be expanded into expressions involving floored values as $\{x\} = x - \lfloor x\rfloor$.
+For a given moment $0 \le t < 43200$ measured in seconds, the positions $h,m,s$ of the hour, minute and seconds hands, given as a proportion of a full rotation, can be expressed as fractional parts of $\frac{t}{n}$ with $n$ the number of seconds for a full rotation of the hand. Note that fractional parts of non-negative real numbers can be expanded into expressions involving floored values as $\lbrace x\rbrace = x - \lfloor x\rfloor$.
 
 $$s = \left \lbrace \frac{t}{S} \right \rbrace = \frac{t}{S} - \left \lfloor \frac{t}{S} \right \rfloor$$
 $$m = \left \lbrace\frac{t}{MS} \right \rbrace = \frac{t}{MS} - \left\lfloor\frac{t}{MS}\right\rfloor$$
