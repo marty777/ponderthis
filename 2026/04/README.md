@@ -55,11 +55,9 @@ $ ./target/release/apr2026 --bonus --threads 10
 
 For a given moment $0 \le t < 43200$ measured in seconds, the positions $h,m,s$ of the hour, minute and seconds hands, given as a proportion of a full rotation, can be expressed as fractional parts of $\frac{t}{n}$ with $n$ the number of seconds for a full rotation of the hand. Note that fractional parts of non-negative real numbers can be expanded into expressions involving floored values as $\{x\} = x - \lfloor x\rfloor$.
 
-$$
-s = \left\{\frac{t}{S}\right\} = \frac{t}{S} - \left\lfloor\frac{t}{S}\right\rfloor \\
-m = \left\{\frac{t}{MS}\right\} = \frac{t}{MS} - \left\lfloor\frac{t}{MS}\right\rfloor\\
-h = \left\{\frac{t}{HMS}\right\} = \frac{t}{HMS} - \left\lfloor\frac{t}{HMS}\right\rfloor
-$$
+$$s = \left \lbrace \frac{t}{S} \right \rbrace = \frac{t}{S} - \left \lfloor \frac{t}{S} \right \rfloor$$
+$$m = \left \lbrace\frac{t}{MS} \right \rbrace = \frac{t}{MS} - \left\lfloor\frac{t}{MS}\right\rfloor$$
+$$h = \left \lbrace \frac{t}{HMS} \right \rbrace = \frac{t}{HMS} - \left\lfloor\frac{t}{HMS}\right\rfloor$$
 
 Because of the lack of reference markings on the dial of the clock, the angles between the hands at a given moment would be indistinguishable from the angles at a different moment during the 12-hour period if the positions of the hands of the two moments were equivalent after a rotation around the face of the clock. If the hand positions of two moments were only equivalent after a reflection and rotation, it would be possible to distinguish between them.
 
@@ -70,11 +68,9 @@ $$s_1 = m_2 + C\\
 
 Expanded to all three equations and rearranged:
 
-$$
-\frac{t_1}{S} - \frac{t_2}{MS} - C =  \left\lfloor\frac{t_1}{S}\right\rfloor - \left\lfloor\frac{t_2}{MS}\right\rfloor \\
-\frac{t_1}{MS} - \frac{t_2}{HMS} - C =  \left\lfloor\frac{t_1}{MS}\right\rfloor - \left\lfloor\frac{t_2}{HMS}\right\rfloor \\
-\frac{t_1}{HMS} - \frac{t_2}{S} - C =  \left\lfloor\frac{t_1}{HMS}\right\rfloor - \left\lfloor\frac{t_2}{S}\right\rfloor \\
-$$
+$$\frac{t_1}{S} - \frac{t_2}{MS} - C =  \left\lfloor\frac{t_1}{S}\right\rfloor - \left\lfloor\frac{t_2}{MS}\right\rfloor$$
+$$\frac{t_1}{MS} - \frac{t_2}{HMS} - C =  \left\lfloor\frac{t_1}{MS}\right\rfloor - \left\lfloor\frac{t_2}{HMS}\right\rfloor$$
+$$\frac{t_1}{HMS} - \frac{t_2}{S} - C =  \left\lfloor\frac{t_1}{HMS}\right\rfloor - \left\lfloor\frac{t_2}{S}\right\rfloor$$
 
 This gives three equations with three variables $t_1, t_2, C$. While the floored terms are non-linear over $t_1, t_2$, they are definitionally integers and have finite possible values for $0 \le t_1, t_2 < 43200$. If these terms are replaced with fixed integers, the equations form a linear system which can be used to solve for moments which have undeducible hand angles on the clock. Solving the linear systems over all possible integer values for the floor terms and all pairings of hands allows the total set of undeducible moments to be found. Duplicate moments and solutions where $t_1 \equiv t_2$ should be filtered out of the set.
 
