@@ -7,6 +7,8 @@ Implementations to produce solutions for the [IBM Research Ponder This](https://
 
 [February 2026](2026/02/) - Blot-avoiding backgammon strategy (Python)
 
+[April 2026](2026/04/) - The Unlabeled Clock (Rust)
+
 ## 2025 Challenges
 
 [April 2025](2025/04/) - Klumpengeist (Python)
