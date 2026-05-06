@@ -63,8 +63,8 @@ Because of the lack of reference markings on the dial of the clock, the angles b
 
 Thus for a given pair of mutually indistinguishable moments $t_1, t_2$, there must be some value $C \not \equiv 0$ such that the positions of the hands of the clock at $t_1$ are equivalent to those at $t_2$, rotated around the face by $C$. Because the clock hands have identical appearances, the relative angles of hands $(s_1, m_1, h_1)$ and $(s_2, m_2, h_2)$  for moments $t_1$ and $t_2$ could be equivalent under rotation between any pairing of hour, minute and second hands, so each of those pairings must be covered. For example, for the pairing $s_1 = m_2 + C, m_1 = h_2 + C, h_1 = s_2 + C$ we would have equations like the following:
 
-$$s_1 = m_2 + C\\
-\frac{t_1}{S} - \left\lfloor\frac{t_1}{S}\right\rfloor = \frac{t_2}{MS} - \left\lfloor\frac{t_2}{MS}\right\rfloor  + C$$
+$$s_1 = m_2 + C$$
+$$\frac{t_1}{S} - \left\lfloor\frac{t_1}{S}\right\rfloor = \frac{t_2}{MS} - \left\lfloor\frac{t_2}{MS}\right\rfloor  + C$$
 
 Expanded to all three equations and rearranged:
 
