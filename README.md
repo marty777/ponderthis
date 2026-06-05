@@ -9,6 +9,8 @@ Implementations to produce solutions for the [IBM Research Ponder This](https://
 
 [April 2026](2026/04/) - The Unlabeled Clock (Rust)
 
+[May 2026](2026/05/) - The Powers of a Binary Matrix (Rust)
+
 ## 2025 Challenges
 
 [April 2025](2025/04/) - Klumpengeist (Python)
