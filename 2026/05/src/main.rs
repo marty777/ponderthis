@@ -1,6 +1,6 @@
 use clap::{Arg, Command};
 use indicatif::{ProgressBar,ProgressStyle};
-use std::{cmp::{Ordering,max}, collections::HashMap};
+use std::cmp::{Ordering,max};
 
 /// Returns an ordered list of primes less than `limit`.
 pub fn eratosthenes(limit:i128) -> Vec<i128> { 
@@ -54,8 +54,6 @@ fn basic_landau_function_mod(n:usize, modulus:usize) -> Result<usize, String> {
     let mut g_log:Vec<f64> = vec![0.0; n+1];
     // Stores intermediate g(x) % modulus, 0 <= x <= n 
     let mut g_mod:Vec<usize> = vec![1; n+1];
-    // Unused, but stores prime powers that are factors of g(n) for examination
-    let mut g_n_factors:HashMap<usize, usize> = HashMap::new();
     // Determine the maximum possible prime divisor of g(n) using the bound 
     // proved by Jon Grantham. The bound is only valid for n >= 5, so handle
     // smaller cases manually
@@ -91,14 +89,6 @@ fn basic_landau_function_mod(n:usize, modulus:usize) -> Result<usize, String> {
                 if g_log[n_1] < a_log {
                     g_log[n_1] = a_log;
                     g_mod[n_1] = ((p_k % modulus) * g_mod[n_1 - p_k]) % modulus;
-                    if n_1 == n {
-                        if g_n_factors.contains_key(&p) {
-                            *(g_n_factors.get_mut(&p).unwrap()) += k;
-                        }
-                        else {
-                            g_n_factors.insert(p, k);
-                        }
-                    }
                 }
                 k += 1;
                 p_k_log = (k as f64) * p_log;
