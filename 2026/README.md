@@ -7,3 +7,5 @@
 [April 2026](04/) - The Unlabeled Clock (Rust)
 
 [May 2026](05/) - The Powers of a Binary Matrix (Rust)
+
+[June 2026](06/) - Superhero Team Movies (Python)

@@ -11,6 +11,8 @@ Implementations to produce solutions for the [IBM Research Ponder This](https://
 
 [May 2026](2026/05/) - The Powers of a Binary Matrix (Rust)
 
+[June 2026](2026/06/) - Superhero Team Movies (Python)
+
 ## 2025 Challenges
 
 [April 2025](2025/04/) - Klumpengeist (Python)
